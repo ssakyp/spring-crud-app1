@@ -124,7 +124,7 @@ public class PersonDao {
 //        } catch (SQLException e) {
 //            throw new RuntimeException(e);
 //        }
-        jdbcTemplate.update("INSERT INTO Person VALUES(1, ?, ?, ?)", person.getName(), person.getAge(), person.getEmail());
+        jdbcTemplate.update("INSERT INTO Person(name, age, email) VALUES (?, ?, ?)", person.getName(), person.getAge(), person.getEmail());
     }
 
     public void update(int id, Person updatedPerson){
