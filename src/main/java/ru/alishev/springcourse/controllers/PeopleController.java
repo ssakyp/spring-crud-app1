@@ -48,9 +48,11 @@ public class PeopleController {
     public String create(@ModelAttribute("person") @Valid Person person,
                          BindingResult bindingResult){
         personValidator.validate(person, bindingResult);
+
         if (bindingResult.hasErrors()){
             return "people/new";
         }
+
         personDao.save(person);
         return "redirect:/people";
     }
@@ -64,7 +66,7 @@ public class PeopleController {
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult,
                          @PathVariable("id") int id){
-        personValidator.validate(person, bindingResult);
+//        personValidator.validate(person, bindingResult);
         if(bindingResult.hasErrors()){
             return "people/edit";
         }

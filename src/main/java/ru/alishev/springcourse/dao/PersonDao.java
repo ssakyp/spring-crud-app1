@@ -130,7 +130,7 @@ public class PersonDao {
 //        } catch (SQLException e) {
 //            throw new RuntimeException(e);
 //        }
-        jdbcTemplate.update("INSERT INTO Person(name, age, email) VALUES (?, ?, ?)", person.getName(), person.getAge(), person.getEmail());
+        jdbcTemplate.update("INSERT INTO Person(name, age, email, address) VALUES (?, ?, ?, ?)", person.getName(), person.getAge(), person.getEmail(), person.getAddress());
     }
 
     public void update(int id, Person updatedPerson){
@@ -154,8 +154,8 @@ public class PersonDao {
 //        personToBeUpdated.setEmail(updatedPerson.getEmail());
 //        personToBeUpdated.setAge(updatedPerson.getAge());
 
-        jdbcTemplate.update("UPDATE Person SET name=?, age=?, email=? WHERE id=?", updatedPerson.getName(),
-                updatedPerson.getAge(), updatedPerson.getEmail(), id);
+        jdbcTemplate.update("UPDATE Person SET name=?, age=?, email=?, address=? WHERE id=?", updatedPerson.getName(),
+                updatedPerson.getAge(), updatedPerson.getEmail(), updatedPerson.getAddress(), id);
     }
 
     public void delete(int id){
@@ -222,7 +222,7 @@ public void testBatchUpdate(){
         List<Person> people = new ArrayList<>();
 
         for(int i = 0 ; i < 1000; i++){
-            people.add(new Person(i, "Name" + i, "test" + i + "@mail.ru",30));
+            people.add(new Person(i, "Name" + i, "test" + i + "@mail.ru",30, "some address"));
         }
 
         return people;
