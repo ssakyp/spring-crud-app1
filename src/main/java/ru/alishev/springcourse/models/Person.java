@@ -13,7 +13,7 @@ public class Person {
     private String name;
 
     @NotEmpty(message = "Email should not be empty")
-    @Email(message = "Email should be valid.")
+    //@Email(message = "Email should be valid.")
     private String email;
 
     @Min(value = 0, message = "Age should be greater than 0")
